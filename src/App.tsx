@@ -2,12 +2,26 @@ import { useState } from "react";
 
 function App() {
   const [bookQuery, setBookQuery] = useState("");
+  const [submittedBookQuery, setSubmittedBookQuery] = useState("");
+
   return (
     <main>
       <h1>BookScout</h1>
       <p>Explore Books</p>
 
-      <form>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+
+          const trimmedBookQuery = bookQuery.trim();
+
+          if (!trimmedBookQuery) {
+            return;
+          }
+
+          setSubmittedBookQuery(trimmedBookQuery);
+        }}
+      >
         <label htmlFor="query">Search Books</label>
         <input
           id="query"
@@ -19,6 +33,7 @@ function App() {
       </form>
 
       <p>Current query: {bookQuery}</p>
+      <p>Submitted query: {submittedBookQuery}</p>
     </main>
   );
 }
