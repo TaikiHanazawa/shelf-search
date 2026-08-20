@@ -70,16 +70,20 @@ function App() {
       <p>Current query: {bookQuery}</p>
       <p>Submitted query: {submittedBookQuery}</p>
 
-      <ul>
-        {filteredBooks.map((book) => (
-          <li key={book.id}>
-            <p>{book.title}</p>
-            <p>{book.author}</p>
-            <p>Genre: {book.genre}</p>
-            <p>Pages: {book.pages}</p>
-          </li>
-        ))}
-      </ul>
+      {filteredBooks.length === 0 ? (
+        <p>No books found.</p>
+      ) : (
+        <ul>
+          {filteredBooks.map((book) => (
+            <li key={book.id}>
+              <p>{book.title}</p>
+              <p>{book.author}</p>
+              <p>Genre: {book.genre}</p>
+              <p>Pages: {book.pages}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </main>
   );
 }
