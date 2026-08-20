@@ -35,6 +35,9 @@ const mockBooks: Book[] = [
 function App() {
   const [bookQuery, setBookQuery] = useState("");
   const [submittedBookQuery, setSubmittedBookQuery] = useState("");
+  const filteredBooks = mockBooks.filter((book) =>
+    book.title.toLowerCase().includes(submittedBookQuery.toLowerCase()),
+  );
 
   return (
     <main>
@@ -68,7 +71,7 @@ function App() {
       <p>Submitted query: {submittedBookQuery}</p>
 
       <ul>
-        {mockBooks.map((book) => (
+        {filteredBooks.map((book) => (
           <li key={book.id}>
             <p>{book.title}</p>
             <p>{book.author}</p>
