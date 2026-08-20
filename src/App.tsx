@@ -1,5 +1,37 @@
 import { useState } from "react";
 
+type Book = {
+  id: number;
+  title: string;
+  author: string;
+  genre: string;
+  pages: number;
+};
+
+const mockBooks: Book[] = [
+  {
+    id: 1,
+    title: "To Kill a Mockingbird",
+    author: "Harper Lee",
+    genre: "Fiction",
+    pages: 281,
+  },
+  {
+    id: 2,
+    title: "1984",
+    author: "George Orwell",
+    genre: "Dystopian Fiction",
+    pages: 328,
+  },
+  {
+    id: 3,
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    genre: "Fiction",
+    pages: 180,
+  },
+];
+
 function App() {
   const [bookQuery, setBookQuery] = useState("");
   const [submittedBookQuery, setSubmittedBookQuery] = useState("");
@@ -34,6 +66,17 @@ function App() {
 
       <p>Current query: {bookQuery}</p>
       <p>Submitted query: {submittedBookQuery}</p>
+
+      <ul>
+        {mockBooks.map((book) => (
+          <li key={book.id}>
+            <p>{book.title}</p>
+            <p>{book.author}</p>
+            <p>Genre: {book.genre}</p>
+            <p>Pages: {book.pages}</p>
+          </li>
+        ))}
+      </ul>
     </main>
   );
 }
