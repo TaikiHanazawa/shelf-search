@@ -8,6 +8,10 @@ type Book = {
   pages: number;
 };
 
+type BookItemProps = {
+  book: Book;
+};
+
 const mockBooks: Book[] = [
   {
     id: 1,
@@ -31,6 +35,17 @@ const mockBooks: Book[] = [
     pages: 180,
   },
 ];
+
+function BookItem({ book }: BookItemProps) {
+  return (
+    <li>
+      <p>{book.title}</p>
+      <p>{book.author}</p>
+      <p>Genre: {book.genre}</p>
+      <p>Pages: {book.pages}</p>
+    </li>
+  );
+}
 
 function App() {
   const [bookQuery, setBookQuery] = useState("");
@@ -75,12 +90,7 @@ function App() {
       ) : (
         <ul>
           {filteredBooks.map((book) => (
-            <li key={book.id}>
-              <p>{book.title}</p>
-              <p>{book.author}</p>
-              <p>Genre: {book.genre}</p>
-              <p>Pages: {book.pages}</p>
-            </li>
+            <BookItem key={book.id} book={book} />
           ))}
         </ul>
       )}
