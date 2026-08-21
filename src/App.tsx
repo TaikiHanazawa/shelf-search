@@ -1,16 +1,6 @@
 import { useState } from "react";
-
-type Book = {
-  id: number;
-  title: string;
-  author: string;
-  genre: string;
-  pages: number;
-};
-
-type BookItemProps = {
-  book: Book;
-};
+import type { Book } from "./types/book";
+import { BookItem } from "./components/BookItem";
 
 const mockBooks: Book[] = [
   {
@@ -35,17 +25,6 @@ const mockBooks: Book[] = [
     pages: 180,
   },
 ];
-
-function BookItem({ book }: BookItemProps) {
-  return (
-    <li>
-      <p>{book.title}</p>
-      <p>{book.author}</p>
-      <p>Genre: {book.genre}</p>
-      <p>Pages: {book.pages}</p>
-    </li>
-  );
-}
 
 function App() {
   const [bookQuery, setBookQuery] = useState("");
